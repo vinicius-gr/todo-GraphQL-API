@@ -4,8 +4,8 @@ import expressGraphQL from 'express-graphql';
 import { makeExecutableSchema } from 'graphql-tools';
 import mongoose from 'mongoose';
 
-import typeDefs from './schemas/task';
-import resolvers from '/resolvers/task';
+import typeDefs from './api/schemas/task';
+import resolvers from './api/resolvers/task';
 
 const schema = makeExecutableSchema({
     typeDefs,
