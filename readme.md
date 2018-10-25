@@ -1,0 +1,1 @@
+This is a GraphQL API of a todo list connected to a NoSQL MongoDB database.
