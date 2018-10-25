@@ -5,7 +5,5 @@ This is a GraphQL Node JS API of a todo list connected to a NoSQL MongoDB databa
 ### Technial Details
 ---
 
- | 
----
-Database  | MongoDB
-Web Framework | Express
+| Database  | MongoDB |
+| Web Framework | Express |
