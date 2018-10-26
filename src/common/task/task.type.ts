@@ -1,4 +1,4 @@
-export const taskTypeDefs = `
+export default `
   type Task {
     id: String!
     desc: String!
