@@ -1,25 +1,11 @@
 export const taskTypeDefs = `
   type Task {
-    id: ID! @unique
+    id: String!
     desc: String!
-    checked: Boolean!
-    createdAt: Date!
-    lastModifiedAt: Date!
   }
 
-  input taskInput {
-    desc: String!
-    checked: Boolean!
-    createdAt: Date!
-    lastModifiedAt: Date!
-  }
-
-  extend type Query {
-    tasks(input: TaskInput): [Task]
+  type Query {
+    tasks: [Task]
     task(id: String!): Task
-  }
-
-  extend type Mutation {
-    addTask(input: TaskInput!): Task
   }
 `;

@@ -6,10 +6,10 @@ const taskSchema = new mongoose.Schema({
     checked: { type: Boolean, required: true },
     createdAt: { type: Date, required: true },
     lastModifiedAt: { type: Date, required: true }
-});
+}, {collection: 'Tasks'});
 
 taskSchema.method('toGraph', function toGraph(this: any) {
     return JSON.parse(JSON.stringify(this));
 });
 
-export default mongoose.model('Task', taskSchema);
+module.exports = mongoose.model('Task', taskSchema);
