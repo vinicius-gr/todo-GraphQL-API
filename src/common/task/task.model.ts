@@ -8,17 +8,20 @@ const taskSchema = new mongoose.Schema({
     },
     checked: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     },
     createdAt: {
         type: Date,
-        required: true
+        required: true,
+        default: new Date()
     },
     lastModifiedAt: {
-        type: Date,
-        required: true
+        type: Date
     }
 }, { collection: 'Tasks' });
+
+taskSchema.set('toObject', { virtuals: true });
 
 taskSchema.method('toGraph', function toGraph(this: any) {
     return JSON.parse(JSON.stringify(this));
