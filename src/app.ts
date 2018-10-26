@@ -1,16 +1,21 @@
 import * as express from 'express';
-const expressGraphQL = require('express-graphql');
+import * as bodyParser from "body-parser";
+
 import connectDB from './config';
+
+const expressGraphQL = require('express-graphql');
+
 import { makeExecutableSchema } from 'graphql-tools';
 import { taskTypeDefs } from './common/task/task.type';
 import { taskResolvers } from './common/task/task.schema';
 
 class App {
-    public app;
+    public app: express.Application;
 
     constructor() {
         this.app = express();
         this.mountRoutes();
+        this.config();
         connectDB();
     }
 
@@ -24,6 +29,11 @@ class App {
             schema: schema,
             graphiql: true
         }));
+    }
+
+    private config(): void {
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({ extended: false }));
     }
 }
 

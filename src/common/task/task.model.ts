@@ -1,6 +1,8 @@
-const mongoose = require('mongoose');
+import * as mongoose from 'mongoose';
 
-const taskSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const taskSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
     desc: { type: String, required: true },
     checked: { type: Boolean, required: true },
