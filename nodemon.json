@@ -1,4 +1,7 @@
 {
+    "env":{
+        "PORT": 3001
+    },
     "ignore": [
         ".git",
         "node_modules",

@@ -1,11 +1,13 @@
 import * as express from 'express';
+const mongoose = require('mongoose');
 
 class App {
-  public express
+  public app;
 
   constructor () {
-    this.express = express();
+    this.app = express();
     this.mountRoutes();
+    this.connectDB();
   }
 
   private mountRoutes (): void {
@@ -15,8 +17,15 @@ class App {
         message: 'Hello World!'
       });
     });
-    this.express.use('/', router);
+    this.app.use('/', router);
+  }
+
+  private connectDB(): void {
+    mongoose.connect(
+      process.env.MONGODB_URI,
+      { useNewUrlParser: true }
+    );
   }
 }
 
-export default new App().express;
+export default new App().app;
