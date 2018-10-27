@@ -7,23 +7,24 @@ export default `
     lastModifiedAt: String!
   }
 
-  input TaskFilterInput {
-    limit: Int
-  }
-
   type Query {
     tasks: [Task]
-    task(id: String!): Task
+    task(_id: String!): Task
   }
 
   input TaskInput {
     desc: String
     cheked: Boolean
-    createdAt: String
-    lastModifiedAt: String
+  }
+
+  input TaskUpdate {
+    _id: ID
+    desc: String
   }
 
   type Mutation {
-    add(input: TaskInput!): Task
+    create(input: TaskInput!): Task
+    checkUncheck(_id: String!): Task
+    update(input: TaskUpdate!): Task
   }
 `;
