@@ -5,16 +5,16 @@ export default {
   Query: {
     tasks: async () => {
       try {
-        const tasks: any[] = await Task.find().exec();
+        const tasks: any[] = await Task.find();
         return tasks.map((task) => task.toGraph());
       } catch (err) {
         console.log(err);
         throw err;
       }
     },
-    task: async (_, { id }) => {
+    task: async (_, { _id }) => {
       try {
-        const task: any = await Task.findById(id);
+        const task: any = await Task.findById(_id);
         return task.toGraph();
       } catch (err) {
         console.log(err);
@@ -37,11 +37,11 @@ export default {
         throw err;
       }
     },
-    checkUncheck: async (_, { id }) => {
+    checkUncheck: async (_, { _id }) => {
       try {
-        const task: any = await Task.findById(id);
+        const task: any = await Task.findById(_id);
         const updatedTasks: any = await Task.findByIdAndUpdate(
-          { _id: id },
+          { _id: _id },
           {
             checked: !task.checked,
             lastModifiedAt: new Date()
@@ -69,6 +69,14 @@ export default {
             runValidators: true
           });
         return task.toGraph();
+      } catch (err) {
+        console.log(err);
+        throw err;
+      }
+    },
+    delete: async (_, { _id }) => {
+      try {
+        return await Task.findByIdAndRemove({ _id: _id });
       } catch (err) {
         console.log(err);
         throw err;

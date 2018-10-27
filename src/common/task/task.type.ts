@@ -4,7 +4,7 @@ export default `
     desc: String!
     checked: Boolean!
     createdAt: String!
-    lastModifiedAt: String!
+    lastModifiedAt: String
   }
 
   type Query {
@@ -26,5 +26,6 @@ export default `
     create(input: TaskInput!): Task
     checkUncheck(_id: String!): Task
     update(input: TaskUpdate!): Task
+    delete(_id: String!): Task
   }
 `;
