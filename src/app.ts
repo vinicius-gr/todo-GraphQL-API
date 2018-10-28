@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
-import connectDB from './config';
+import connectDB from './configDB';
 import taskSchema from './common/task/task.index';
 
 const expressGraphQL = require('express-graphql');
