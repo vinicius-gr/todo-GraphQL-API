@@ -1,5 +1,5 @@
-const Task = require('./task.model');
 const mongoose = require('mongoose');
+const Task = require('./task.model');
 
 export default {
   Query: {
@@ -30,7 +30,8 @@ export default {
             _id: mongoose.Types.ObjectId(),
             ...input,
             createdAt: new Date()
-          });
+          }
+        );
         return task.toGraph();
       } catch (err) {
         console.log(err);
@@ -41,7 +42,7 @@ export default {
       try {
         const task: any = await Task.findById(_id);
         const updatedTasks: any = await Task.findByIdAndUpdate(
-          { _id: _id },
+          { _id },
           {
             checked: !task.checked,
             lastModifiedAt: new Date()
@@ -49,7 +50,8 @@ export default {
           {
             new: true,
             runValidators: true
-          });
+          }
+        );
         return updatedTasks.toGraph();
       } catch (err) {
         console.log(err);
@@ -67,7 +69,8 @@ export default {
           {
             new: true,
             runValidators: true
-          });
+          }
+        );
         return task.toGraph();
       } catch (err) {
         console.log(err);
@@ -76,7 +79,7 @@ export default {
     },
     delete: async (_, { _id }) => {
       try {
-        return await Task.findByIdAndRemove({ _id: _id });
+        return await Task.findByIdAndRemove({ _id });
       } catch (err) {
         console.log(err);
         throw err;
