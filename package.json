@@ -7,7 +7,9 @@
     "test": "tsc && mocha dist/*.specs.js",
     "dev": "nodemon",
     "start:debug": "node --inspect=5858 -r ts-node/register src/index.ts",
-    "eslint": "./node_modules/.bin/eslint src/**/*.ts --ext ts --fix"
+    "eslint": "./node_modules/.bin/eslint src/**/*.ts --ext ts --fix",
+    "compile": "rm -rf dist/* && tsc",
+    "start": "node build/index.js"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",
